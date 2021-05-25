@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var User = require('./bean/user');
+// var add = require('./db/add')
 
 var mysql = require('mysql');
+const app = require('../app');
+const { response } = require('../app');
 
 let connection = mysql.createConnection({
   host:"localhost",
@@ -18,7 +21,7 @@ connection.connect(err =>{
 
 
 router.get('/', function(req, res, next) {
-  res.render('about');
+  res.render('about',);
 });
 
 
@@ -50,6 +53,16 @@ router.post('/register',(req,res) =>{
   
   // req.session.user = user1;
 })
+
+router.get('/menu2',(req,response) =>{
+  connection.query('select * from addd',function(error,data){
+    if(error) throw error
+    console.log(data)
+    response.render("menu2",{data:data})
+  })
+})
+
+
 
 
 module.exports = router;
