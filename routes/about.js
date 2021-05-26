@@ -3,6 +3,7 @@ var router = express.Router();
 var User = require('./bean/user');
 
 var mysql = require('mysql');
+const { render } = require('ejs');
 
 let connection = mysql.createConnection({
   host:"localhost",
@@ -51,5 +52,54 @@ router.post('/register',(req,res) =>{
   // req.session.user = user1;
 })
 
+// ------------------------------------------------------------------------------------
+
+router.get('/hou',(req,res)=>{
+  let sql = `SELECT * FROM ADDD`
+  connection.query(sql,(err,results)=>{
+    if(err) throw err;
+    res.render('hou',{data:results})
+  })
+})
+
+
+router.delete('/del/:id',(req,res)=>{
+  let id = req.params.id;
+  connection.query(`DELETE FROM ADDD WHERE ID = ${id}`,(err,results) =>{
+    if(err) throw err;
+    res.send('success')
+  })
+})
+
+router.get('/add1',(req,res)=>{
+  res.render('add')
+})
+
+router.post('/add',(req,res)=>{
+  connection.query(`INSERT INTO addd(ta_name,ta_order) VALUES('${req.body.qq}','${req.body.ww}')`,(err,results)=>{
+    if(err) throw err;
+    res.redirect('/about/hou')
+  })
+})
+
+router.get('/upa/:id',(req,res) =>{
+  let id = req.params.id;
+  connection.query(`SELECT * FROM ADDD WHERE ID = ${id}`,(err,results) =>{
+    if(err) throw err;
+    res.render('add1',{data:results})
+  })
+})
+
+router.post('/upd',(req,res)=>{
+  let id = req.body.id1;
+  connection.query(`DELETE FROM ADDD WHERE ID = ${id}`,(err,results) =>{
+    if(err) throw err;
+    connection.query(`INSERT INTO addd(id,ta_name,ta_order) VALUES(${id},'${req.body.qq}','${req.body.ww}')`,(err,results)=>{
+      if(err) throw err;
+      res.redirect('/about/hou')
+  })
+})
+
+})
 
 module.exports = router;
