@@ -441,14 +441,17 @@
                         <div class="data-div">
                             <div class="row tableHeader">
                                 <div class="col-xs-1 ">
-                                    编码
+                                    名字
                                 </div>
                                 <div class="col-xs-4">
-                                    权限名
+                                    电话号码
                                 </div>
                                 <div class="col-xs-5">
-                                    描述
+                                    点单内容
                                 </div>
+                                <!-- <div class="col-xs-13">
+                                    点单金额
+                                </div> -->
                                 <div class="col-xs-2">
                                     操作
                                 </div>
@@ -461,10 +464,12 @@
                                         <p><%= i.id%></p>
                                     </div>
                                     <div class="col-xs-4">
-                                    </span><span><p><%= i.ta_name%></p></span>
+                                    <p><%= i.ta_name%></p>
                                     </div>
-                               <div class="col-xs-5">
-                               <p><%= i.ta_order%></p> 
+                                    <div class="col-xs-5"> 
+                                    <p><%= i.ta_order%></p> 
+                                    <!-- <div class="col-xs-13"> 
+                                    <p><%= i.ta_account%></p>  -->
                                </div>
                               <div class="col-xs-2">
                                 <button  class="btn btn-success btn-xs btu" data-toggle="modal" data-target="#changeChar" data-id='<%= i.id%>'>添加</button>
