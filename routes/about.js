@@ -42,7 +42,7 @@ router.post('/',(req,res) =>{
 router.post('/register',(req,res) =>{
   let user1 = new User(req.body.name,req.body.password,req.body.Email,req.body.repassword);
   let query = 'insert into register(name,password,Email,repassword) values("' +user1.name + '","' + user1.password +'","' + user1.Email +'","' + user1.repassword +'")'
-  connection.query(query,(err,results,fields) =>{
+  connection.query(query,(err,results) =>{
     if(err) throw err;
     console.log(results);
     console.log(user1);
@@ -62,7 +62,7 @@ router.get('/hou',(req,res)=>{
   })
 })
 
-
+//删除
 router.delete('/del/:id',(req,res)=>{
   let id = req.params.id;
   connection.query(`DELETE FROM ADDD WHERE ID = ${id}`,(err,results) =>{
@@ -71,6 +71,7 @@ router.delete('/del/:id',(req,res)=>{
   })
 })
 
+//新增
 router.get('/add1',(req,res)=>{
   res.render('add')
 })
@@ -82,6 +83,7 @@ router.post('/add',(req,res)=>{
   })
 })
 
+//改
 router.get('/upa/:id',(req,res) =>{
   let id = req.params.id;
   connection.query(`SELECT * FROM ADDD WHERE ID = ${id}`,(err,results) =>{
@@ -101,5 +103,26 @@ router.post('/upd',(req,res)=>{
 })
 
 })
+
+//查询
+router.get('/xs/:id',(req,res) =>{
+  let id = req.params.id;
+  connection.query(`SELECT * FROM ADDD WHERE ID = ${id}`,(err,results) =>{
+    if(err) throw err
+    else{
+      console.log(result);
+    };
+
+  })
+})
+
+router.post('/xs',(req,res) =>{
+  connection.query(`INSERT INTO addd(id,ta_name,ta_order) VALUES(${id},'${req.body.qq}','${req.body.ww}')`,(err,results)=>{
+    if(err) throw err;
+    res.redirect('/about/hou')
+})
+})
+
+
 
 module.exports = router;
