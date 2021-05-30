@@ -9,4 +9,10 @@ router.post('/register',(req,res) =>{
   res.send("dsh")
 })
 
+router.get('/', function(req, res, next) {
+  res.render('index2');
+});
+
+
+
 module.exports = router;
