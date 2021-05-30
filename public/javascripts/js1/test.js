@@ -31,13 +31,15 @@ $(function(){
 
 
     // ***********************
-    document.getElementById('seach').onclick =()=>{
+    document.getElementsByClassName('seach ')[0].onclick= ()=>{
+        alert(1)
        let mes = document.getElementById('inp_sea').value;
        $.ajax({
            url:'/about/search/'+mes,
            type:'get',
            success:function(data){
-               document.getElementById('row1').innerHTML =
+               alert(22)
+               document.getElementsByClassName('row1')[0].innerHTML =
                data.map(i =>
                    `
                    <div class="col-xs-1 ">

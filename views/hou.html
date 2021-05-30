@@ -72,8 +72,9 @@
                         <a>退出登录</a>
                     </p>
                 </div>
+                <!-- #char -->
                 <div class="meun-title">账号管理</div>
-                <div class="meun-item meun-item-active" href="#sour" aria-controls="sour" role="tab" data-toggle="tab"><img src="/images/icon_source.png">资源管理</div>
+                <div class="meun-item meun-item-active" href="#sour " aria-controls="sour" role="tab" data-toggle="tab"><img src="/images/icon_source.png">资源管理</div>
                 <div class="meun-item" href="#char" aria-controls="char" role="tab" data-toggle="tab"><img src="/images/icon_chara_grey.png">权限管理</div>
                 <div class="meun-item" href="#user" aria-controls="user" role="tab" data-toggle="tab"><img src="/images/icon_user_grey.png">用户管理</div>
                 <div class="meun-item" href="#chan" aria-controls="chan" role="tab" data-toggle="tab"><img src="/images/icon_change_grey.png">修改密码</div>
@@ -421,7 +422,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                                        <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                                        <button type="button"  class="btn btn-xs btn-danger">保 存</button>
                                     </div>
                                 </div>
                                 <!-- /.modal-content -->
@@ -438,7 +439,7 @@
                         <div class="check-div">
                             <input type="text" id="inp_sea" class="form-control input-sm" placeholder="输入文字搜索">
                             <!-- ************************ -->
-                            <button class="btn btn-yellow btn-xs" id="seach" name="search" data-toggle="modal" data-target="#searchChar" >查询用户</button>
+                            <button class="btn seach btn-yellow btn-xs" id="seach inp_sea"  data-toggle="modal" data-target="#searchChar" >查询用户</button>
                         </div>
 
                         <div class="data-div">
@@ -455,11 +456,10 @@
                                 <div class="col-xs-2">
                                     操作
                                 </div>
-                            </div>
                             <% data.forEach(i =>{%>
                             <div class="tablebody" id="tablebody">
                                
-                                <div class="row" id="row1">
+                                <div class="row1" id="row1">
                                     
                                     <div class="col-xs-1 ">
                                         <p><%= i.id%></p>
