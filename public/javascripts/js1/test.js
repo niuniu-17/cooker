@@ -15,7 +15,7 @@ $(function(){
                 success:function(data){
                     if(data =='success'){
                         alert('删除成功')
-                        $(i).parent().siblings().siblings().remove()
+                        $(i).parent().parent().parent().remove()
                     }
                 }
             })
@@ -29,5 +29,37 @@ $(function(){
         }
     })
 
-    
+
+    // ***********************
+    document.getElementById('seach').onclick =()=>{
+       let mes = document.getElementById('inp_sea').value;
+       $.ajax({
+           url:'/about/search/'+mes,
+           type:'get',
+           success:function(data){
+               document.getElementById('row1').innerHTML =
+               data.map(i =>
+                   `
+                   <div class="col-xs-1 ">
+                   <p>${i.id}</p>
+               </div>
+               <div class="col-xs-4">
+               <p>${i.ta_name}</p>
+               </div>
+               <div class="col-xs-5"> 
+               <p>${i.ta_order}</p> 
+               <!-- <div class="col-xs-13"> 
+               <p>${i.ta_account}</p>  -->
+          </div>
+         <div class="col-xs-2">
+           <button  class="btn btn-success btn-xs btu" data-toggle="modal" data-target="#changeChar" data-id=${i.id}>添加</button>
+           <button class="btn btn-danger btn-xs del" data-toggle="modal" data-target="#deleteChar" data-id=${i.id}>删除</button>
+           <button class="btn btn-danger btn-xs upa" data-toggle="modal" data-target="#deleteChar" data-id=${i.id}>修改</button>
+        </div>
+                   `
+               ).join("");
+           }
+       })
+    }
+
 })

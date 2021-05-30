@@ -63,25 +63,25 @@
             <!-- 左侧菜单栏目块 -->
             <div class="leftMeun" id="leftMeun">
                 <div id="logoDiv">
-                    <p id="logoP"><img id="logo" alt="左右结构项目" src="images/logo.png"><span>左右结构项目</span></p>
+                    <p id="logoP"><img id="logo" alt="芒果不忙的" src="/images/logo.png"><span>后台管理</span></p>
                 </div>
                 <div id="personInfor">
-                    <p id="userName">杨鹏</p>
-                    <p><span>yangxp@qq.com</span> More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+                    <p id="userName">芒果不忙</p>
+                    <p><span>1937438539@qq.com</span> More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">mango之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">mango餐厅</a></p>
                     <p>
                         <a>退出登录</a>
                     </p>
                 </div>
                 <div class="meun-title">账号管理</div>
-                <div class="meun-item meun-item-active" href="#sour" aria-controls="sour" role="tab" data-toggle="tab"><img src="images/icon_source.png">资源管理</div>
-                <div class="meun-item" href="#char" aria-controls="char" role="tab" data-toggle="tab"><img src="images/icon_chara_grey.png">权限管理</div>
-                <div class="meun-item" href="#user" aria-controls="user" role="tab" data-toggle="tab"><img src="images/icon_user_grey.png">用户管理</div>
-                <div class="meun-item" href="#chan" aria-controls="chan" role="tab" data-toggle="tab"><img src="images/icon_change_grey.png">修改密码</div>
+                <div class="meun-item meun-item-active" href="#sour" aria-controls="sour" role="tab" data-toggle="tab"><img src="/images/icon_source.png">资源管理</div>
+                <div class="meun-item" href="#char" aria-controls="char" role="tab" data-toggle="tab"><img src="/images/icon_chara_grey.png">权限管理</div>
+                <div class="meun-item" href="#user" aria-controls="user" role="tab" data-toggle="tab"><img src="/images/icon_user_grey.png">用户管理</div>
+                <div class="meun-item" href="#chan" aria-controls="chan" role="tab" data-toggle="tab"><img src="/images/icon_change_grey.png">修改密码</div>
                 <div class="meun-title">地区管理</div>
-                <div class="meun-item" href="#scho" aria-controls="scho" role="tab" data-toggle="tab"><img src="images/icon_house_grey.png">地区管理</div>
-                <div class="meun-item" href="#regu" aria-controls="regu" role="tab" data-toggle="tab"><img src="images/icon_rule_grey.png">规则管理</div>
-                <div class="meun-item" href="#stud" aria-controls="stud" role="tab" data-toggle="tab"><img src="images/icon_card_grey.png">人员信息</div>
-                <div class="meun-item" href="#sitt" aria-controls="sitt" role="tab" data-toggle="tab"><img src="images/icon_char_grey.png">座位管理</div>
+                <div class="meun-item" href="#scho" aria-controls="scho" role="tab" data-toggle="tab"><img src="/images/icon_house_grey.png">地区管理</div>
+                <div class="meun-item" href="#regu" aria-controls="regu" role="tab" data-toggle="tab"><img src="/images/icon_rule_grey.png">规则管理</div>
+                <div class="meun-item" href="#stud" aria-controls="stud" role="tab" data-toggle="tab"><img src="/images/icon_card_grey.png">人员信息</div>
+                <div class="meun-item" href="#sitt" aria-controls="sitt" role="tab" data-toggle="tab"><img src="/images/icon_char_grey.png">座位管理</div>
             </div>
             <!-- 右侧具体内容栏目 -->
             <div id="rightContent">
@@ -434,10 +434,11 @@
                     <!-- --------------------------------------------------------------------------- -->
                     <!-- 权限管理模块 -->
                     <div role="tabpanel" class="tab-pane" id="char">
-
+                  
                         <div class="check-div">
-                            <input type="text" class="form-control input-sm" placeholder="输入文字搜索">
-                            <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#searchChar" data-id='<%= i.id%>'>查询用户</button>
+                            <input type="text" id="inp_sea" class="form-control input-sm" placeholder="输入文字搜索">
+                            <!-- ************************ -->
+                            <button class="btn btn-yellow btn-xs" id="seach" name="search" data-toggle="modal" data-target="#searchChar" >查询用户</button>
                         </div>
 
                         <div class="data-div">
@@ -451,17 +452,15 @@
                                 <div class="col-xs-5">
                                     点单内容
                                 </div>
-                                <!-- <div class="col-xs-13">
-                                    点单金额
-                                </div> -->
                                 <div class="col-xs-2">
                                     操作
                                 </div>
                             </div>
-                            <div class="tablebody">
+                            <% data.forEach(i =>{%>
+                            <div class="tablebody" id="tablebody">
                                
-                                <div class="row">
-                                    <% data.forEach(i =>{%>
+                                <div class="row" id="row1">
+                                    
                                     <div class="col-xs-1 ">
                                         <p><%= i.id%></p>
                                     </div>
@@ -470,19 +469,17 @@
                                     </div>
                                     <div class="col-xs-5"> 
                                     <p><%= i.ta_order%></p> 
-                                    <!-- <div class="col-xs-13"> 
-                                    <p><%= i.ta_account%></p>  -->
-                               </div>
+                                    </div>
+                                    
                               <div class="col-xs-2">
                                 <button  class="btn btn-success btn-xs btu" data-toggle="modal" data-target="#changeChar" data-id='<%= i.id%>'>添加</button>
                                 <button class="btn btn-danger btn-xs del" data-toggle="modal" data-target="#deleteChar" data-id='<%= i.id%>'>删除</button>
                                 <button class="btn btn-danger btn-xs upa" data-toggle="modal" data-target="#deleteChar" data-id='<%= i.id%>'>修改</button>
-                             </div>
-                             <%})%>
-                        
+                              </div>
+                            </div>
                         </div>
+                        <%})%>
                     </div>
-
                 </div>
                 <!--页码块-->
                 <footer class="footer">
@@ -604,8 +601,8 @@
                 </div>
                 <!-- /.modal -->
 
-                <!--弹出删除权限警告窗口-->
-                <div class="modal fade" id="deleteChar" role="dialog" aria-labelledby="gridSystemModalLabel">
+                <!-- 弹出删除权限警告窗口 -->
+                <!-- <div class="modal fade" id="deleteChar" role="dialog" aria-labelledby="gridSystemModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -622,10 +619,10 @@
                                 <button type="button" class="btn btn-xs btn-danger">保 存</button>
                             </div>
                         </div>
-                        <!-- /.modal-content -->
+                        
                     </div>
-                    <!-- /.modal-dialog -->
-                </div>
+                    
+                </div> -->
                 <!-- /.modal -->
 
             </div>
@@ -652,51 +649,55 @@
                     </div>
                 </div>
                 <div class="data-div">
-                    <div class="row tableHeader">
-                        <div class="col-xs-2 ">
+                    <div class="row tableHeader" id="tablebody">
+                        <div class="col-xs-2 " id="row1">
                             用户名
                         </div>
                         <div class="col-xs-2">
-                            地区
+                            电话号码
                         </div>
                         <div class="col-xs-2">
-                            真实姓名
+                            点单餐品
                         </div>
                         <div class="col-xs-2">
-                            电话
+                            点单金额
                         </div>
                         <div class="col-xs-2">
-                            状态
+                            备注
                         </div>
                         <div class="col-xs-2">
                             操作
                         </div>
                     </div>
-                    <div class="tablebody">
+                    <% data.forEach(i =>{%>
+                        <div class="tablebody">
 
-                        <div class="row">
-                            <div class="col-xs-2 ">
-                                goodmoning
-                            </div>
-                            <div class="col-xs-2">
-                                国际关系地区
-                            </div>
-                            <div class="col-xs-2">
-                                李豆豆
-                            </div>
-                            <div class="col-xs-2">
-                                13688889999
-                            </div>
-                            <div class="col-xs-2">
-                                状态
-                            </div>
-                            <div class="col-xs-2">
-                                <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#reviseUser">修改</button>
-                                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteUser">删除</button>
+                            <div class="row">
+                                <div class="col-xs-2 ">
+                                    <p><%= i.id%></p>
+                                </div>
+                                <div class="col-xs-2">
+                                    <p><%= i.tb_name%></p>
+                                </div>
+                                <div class="col-xs-2">
+                                    <p><%= i.tel%></p>
+                                </div>
+                                <div class="col-xs-2">
+                                    <p><%= i.tb_order%></p>
+                                </div>
+                                <div class="col-xs-2">
+                                    <p><%= i.tb_account%></p>
+                                </div>
+    
+                                <div class="col-xs-2">
+                                    <button  class="btn btn-success btn-xs btu" data-toggle="modal" data-target="#changeChar" data-id='<%= i.id%>'>添加</button>
+                                    <button class="btn btn-success btn-xs upa" data-toggle="modal" data-target="#reviseUser" data-id='<%= i.id%>'>修改</button>
+                                    <button class="btn btn-danger btn-xs del" data-toggle="modal" data-target="#deleteUser" data-id='<%= i.id%>'>删除</button>
+                                </div>
                             </div>
                         </div>
-
-                    </div>
+                        <%})%>
+                   
 
                 </div>
                 <!--页码块-->

@@ -105,16 +105,25 @@ router.post('/upd',(req,res)=>{
 })
 
 //查询
-router.get('/xs/:id',(req,res) =>{
-  let id = req.params.id;
-  connection.query(`SELECT * FROM ADDD WHERE ID = ${id}`,(err,results) =>{
-    if(err) throw err
-    else{
-      console.log(result);
-    };
+// <!-- ************************ -->
 
+router.get('/search/:mes',(req,res) =>{
+  connection.query(`SELECT * FROM ADDD WHERE ID like '%${req.params.mes}%'`,(err,results) =>{
+    if(err) throw err;
+    console.log(results);
+    res.send(results)
   })
 })
+// router.get('/xs/:id',(req,res) =>{
+//   let id = req.params.id;
+//   connection.query(`SELECT * FROM ADDD WHERE ID = ${id}`,(err,results) =>{
+//     if(err) throw err
+//     else{
+//       console.log(result);
+//     };
+
+//   })
+// })
 
 router.post('/xs',(req,res) =>{
   connection.query(`INSERT INTO addd(id,ta_name,ta_order) VALUES(${id},'${req.body.qq}','${req.body.ww}')`,(err,results)=>{
@@ -123,6 +132,58 @@ router.post('/xs',(req,res) =>{
 })
 })
 
+
+
+// <!-- ************************ -->
+router.get('/hou',(req,res)=>{
+  let sql = `SELECT * FROM manage`
+  connection.query(sql,(err,results)=>{
+    if(err) throw err;
+    res.render('hou',{data:results})
+  })
+})
+
+//删除
+router.delete('/del/:id',(req,res)=>{
+  let id = req.params.id;
+  connection.query(`DELETE FROM manage WHERE ID = ${id}`,(err,results) =>{
+    if(err) throw err;
+    res.send('success')
+  })
+})
+
+//新增
+router.get('/add1',(req,res)=>{
+  res.render('add')
+})
+
+router.post('/add',(req,res)=>{
+  connection.query(`INSERT INTO addd(tb_name,tel,tb_order,tb_account) VALUES('${req.body.qq}','${req.body.ww}','${req.body.yy}','${req.body.zz}')`,(err,results)=>{
+    if(err) throw err;
+    res.redirect('/about/hou')
+  })
+})
+
+//改
+router.get('/upa/:id',(req,res) =>{
+  let id = req.params.id;
+  connection.query(`SELECT * FROM manage WHERE ID = ${id}`,(err,results) =>{
+    if(err) throw err;
+    res.render('add1',{data:results})
+  })
+})
+
+router.post('/upd',(req,res)=>{
+  let id = req.body.id1;
+  connection.query(`DELETE FROM manage WHERE ID = ${id}`,(err,results) =>{
+    if(err) throw err;
+    connection.query(`INSERT INTO addd(id,tb_name,tb_order,tb_account) VALUES(${id},'${req.body.qq}','${req.body.ww}','${req.body.yy}','${req.body.zz}')`,(err,results)=>{
+      if(err) throw err;
+      res.redirect('/about/hou')
+  })
+})
+
+})
 
 
 module.exports = router;
