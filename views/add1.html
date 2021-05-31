@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/about/upd" method="post">
+        <% data.forEach(i =>{%>
+        权限：<input type="text" name="qq" value="<%= i.id%>" placeholder="请输入你的权限">
+        描述：<input type="text" name="ww" value="<%= i.id%>" placeholder="请输入你的描述">
+        <input type="hidden" name="id1" value="<%= i.id%>">
+        <input type="submit">
+        <%})%>
+    </form>
+</body>
+</html>
